@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./css/theme.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/pages.css" />
+
+    <title>folio</title>
+  </head>
+  <body>
+    <div class="theme-panel">
+      <div class="theme-body">
+        <span>Change Theme</span>
+        <div class="btn-group">
+          <button data-toggle="light" class="switcher-btn">Light</button>
+          <button data-toggle="dark" class="switcher-btn">Dark</button>
+        </div>
+        <button class="theme-tab">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+    </div>
+
+    <main class="site-wrapper">
+      <header>
+        <nav class="navbar">
+          <div class="brand-logo">
+            <a href="/"><h2>folio.</h2></a>
+          </div>
+          <div class="navbar-nav">
+            <ul class="ul-defaults-none main-menu">
+              <li class="nav-item">Home</li>
+              <li class="nav-item" data-open="about">About Me</li>
+              <li class="nav-item" data-open="contact">Contacts</li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!--Hero section-->
+      <section class="hero-bg">
+        <div class="container">
+          <div class="hero-content">
+            <div class="code-icon">
+              <i class="fa fa-code"></i>
+            </div>
+            <h2 class="header-lg">Code. Eat. Sleep.</h2>
+            <div class="sub-header">
+              I create meaningful solutions for your brands and products
+              <br />
+              Give your customers the best experience possible.
+            </div>
+            <div class="btn btn-primary round-pill">
+              <a href="#" data-open="contact">Let's talk now</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="portfolio-section">
+        <div class="container search-container">
+          <label for="search">
+            <input
+              autocomplete="off"
+              id="search"
+              type="text"
+              class="search-input"
+              placeholder="Search"
+            />
+            <i class="fa fa-search"></i>
+          </label>
+          <ul class="portfolio-filter-nav ul-defaults-none">
+            <li data-filter="all" class="filter-link">All Work</li>
+            <li data-filter="web" class="filter-link">Web Development</li>
+            <li data-filter="app" class="filter-link">App Development</li>
+            <li data-filter="ui" class="filter-link">UI Design</li>
+          </ul>
+        </div>
+
+        <div class="portfolio-grid">
+          <div class="portfolio-card" data-item="web">
+            <img src="./assets/images/portfolio-1.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>Web Development</div>
+              <h3>Photography Website</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="web">
+            <img src="./assets/images/portfolio-2.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>Web Development</div>
+              <h3>Media Website</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="web">
+            <img src="./assets/images/portfolio-3.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>Web Development</div>
+              <h3>Merch Website</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="app">
+            <img src="./assets/images/portfolio-4.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>App Development</div>
+              <h3>Teams App</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="app">
+            <img src="./assets/images/portfolio-5.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>App Development</div>
+              <h3>Media Display</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="ui">
+            <img src="./assets/images/portfolio-6.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>UI Design</div>
+              <h3>Daily Outlook</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="app">
+            <img src="./assets/images/portfolio-7.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>App Development</div>
+              <h3>VPN</h3>
+            </a>
+          </div>
+          <div class="portfolio-card" data-item="ui">
+            <img src="./assets/images/portfolio-8.jpg" alt="portfolio image" />
+            <a href="#" class="card-popup-box">
+              <div>UI Design</div>
+              <h3>Phone Alert</h3>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--Modals-->
+      <!--About page Modal-->
+      <div
+        id="about"
+        class="full-site-modal page-block"
+        data-animation="zoomInOut"
+      >
+        <header class="modal-header">
+          <h3>ABOUT PAGE</h3>
+          <i class="fa fa-times" data-close></i>
+        </header>
+        <div class="modal-body">
+          <div class="img-wrapper">
+            <img src="" alt="" />
+          </div>
+          <h2>John Terry</h2>
+          <p>text 1</p>
+          <p>text 2</p>
+          <div>
+            <div>Email Me:</div>
+            <a href="mainto:johnathan.p.terry@gmail.com"
+              >johnathan.p.terry@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+
+      <!--Contact page Modal-->
+      <div
+        id="contact"
+        class="full-site-modal page-block"
+        data-animation="zoomInOut"
+      >
+        <header class="modal-header">
+          <h3>ABOUT PAGE</h3>
+          <i class="fa fa-times" data-close></i>
+        </header>
+        <div class="modal-body">
+          <div class="img-wrapper">
+            <img src="" alt="" />
+          </div>
+          <h2>John Terry</h2>
+          <p>text 1</p>
+          <p>text 2</p>
+          <div>
+            <div>Email Me:</div>
+            <a href="mainto:johnathan.p.terry@gmail.com"
+              >johnathan.p.terry@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="./js/main.js" type="text/javascript"></script>
+  </body>
+</html>
