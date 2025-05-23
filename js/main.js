@@ -1,5 +1,3 @@
-const { createElement } = require("react");
-
 const theme = "theme";
 const dataTheme = "data-theme";
 const themeTab = ".theme-tab";
@@ -20,23 +18,136 @@ const portfolioData = "[data-item]";
 const root = document.documentElement;
 
 /* Portfolio Builder 
-  title, item, png
+  title, item, png, h2, p1, p2
 */
-
+const ipsum =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 let portfolioCards = [
-  ["Photography Website", "web", "portfolio-1.jpg"],
-  ["Media Website", "web", "portfolio-2.jpg"],
-  ["Merch Website", "web", "portfolio-3.jpg"],
-  ["Teams App", "app", "portfolio-4.jpg"],
-  ["Media Display", "app", "portfolio-5.jpg"],
-  ["Daily Outlook", "ui", "portfolio-6.jpg"],
-  ["VPN", "app", "portfolio-7.VPN"],
-  ["Phone Aleart", "ui", "portfolio-8.jpg"],
+  ["Photography Website", "web", "portfolio-1.jpg", "Title", ipsum, ipsum],
+  ["Media Website", "web", "portfolio-2.jpg", "Title", ipsum, ipsum],
+  ["Merch Website", "web", "portfolio-3.jpg", "Title", ipsum, ipsum],
+  ["Teams App", "app", "portfolio-4.jpg", "Title", ipsum, ipsum],
+  ["Media Display", "app", "portfolio-5.jpg", "Title", ipsum, ipsum],
+  ["Daily Outlook", "ui", "portfolio-6.jpg", "Title", ipsum, ipsum],
+  ["VPN", "app", "portfolio-7.jpg", "Title", ipsum, ipsum],
+  ["Phone Alert", "ui", "portfolio-8.jpg", "Title", ipsum, ipsum],
 ];
+function deleteModal(modal) {
+  setTimeout(() => {
+    modal.replaceChildren();
+    modal.remove();
+  }, 500);
+}
 const portfolioGrid = document.querySelector(".portfolio-grid");
 for (const card of portfolioCards) {
-  portfolioGrid.appendChild(createElement("div"));
-  //TODO make the whole damn tree
+  const fullCard = document.createElement("div");
+  const image = document.createElement("img");
+  const popup = document.createElement("a");
+  const categorey = document.createElement("div");
+  const title = document.createElement("h3");
+
+  fullCard.className = "portfolio-card";
+  fullCard.setAttribute("data-item", card[1]);
+  portfolioGrid.appendChild(fullCard);
+
+  image.src = `./assets/images/${card[2]}`;
+  image.alt = "Portfolio Image";
+  fullCard.appendChild(image);
+
+  popup.className = "card-popup-box";
+  //HREF
+  fullCard.appendChild(popup);
+
+  switch (card[1]) {
+    case "web": {
+      categorey.innerHTML = "Web Development";
+    }
+    case "app": {
+      categorey.innerHTML = "App Development";
+    }
+    case "ui": {
+      categorey.innerHTML = "UI Design";
+    }
+    default: {
+      categorey.innerHTML = "Personal Project";
+    }
+  }
+  popup.appendChild(categorey);
+
+  title.innerHTML = card[0];
+  popup.appendChild(title);
+  //TODO Add Modal generation, add click event to target data project
+  //Modals
+
+  fullCard.addEventListener("click", function () {
+    const modal = document.createElement("div");
+    const modalDialogue = document.createElement("div");
+
+    const modalHead = document.createElement("header");
+    const modalH3 = document.createElement("h3");
+    const closer = document.createElement("i");
+
+    const modalBody = document.createElement("div");
+    const imgWrap = document.createElement("div");
+    const img = document.createElement("img");
+    const textWrap = document.createElement("div");
+
+    const modalH2 = document.createElement("h2");
+    const modalP1 = document.createElement("p");
+    const modalP2 = document.createElement("p");
+
+    modal.className = "modal";
+    modal.setAttribute("data-project", card[0]);
+    modal.setAttribute("data-animation", "slideInOutTop");
+
+    modalDialogue.className = "modal-dialogue";
+    modal.appendChild(modalDialogue);
+
+    modalHead.className = "modal-header";
+    modalDialogue.appendChild(modalHead);
+
+    modalH3.innerHTML = card[0];
+    modalHead.appendChild(modalH3);
+
+    closer.className = "fa fa-times";
+    modalHead.appendChild(closer);
+
+    modalBody.className = "modal-body";
+    modalDialogue.appendChild(modalBody);
+
+    imgWrap.className = "img-wrapper";
+    modalBody.appendChild(imgWrap);
+
+    img.src = `./assets/images/${card[2]}`;
+    img.alt = `Portfolio Image`;
+    imgWrap.appendChild(img);
+
+    textWrap.className = "modal-text";
+
+    modalH2.innerHTML = card[3];
+    modalP1.innerHTML = card[4];
+    modalP2.innerHTML = card[5];
+    textWrap.appendChild(modalH2);
+    textWrap.appendChild(modalP1);
+    textWrap.appendChild(modalP2);
+
+    modalBody.appendChild(textWrap);
+
+    document.querySelector("main").appendChild(modal);
+    setTimeout(() => {
+      modal.classList.add(isVisable);
+    }, 20);
+    modal.addEventListener("click", function (e) {
+      if (e.target === this) {
+        this.classList.remove("is-visable");
+        deleteModal(this);
+      }
+    });
+    closer.addEventListener("click", function () {
+      modal.classList.remove("is-visable");
+      deleteModal(modal);
+    });
+  });
 }
 
 /* Portfolio */
@@ -140,6 +251,18 @@ for (const elm of openModal) {
 
 for (const elm of closeModal) {
   elm.addEventListener("click", function () {
-    this.parentElement.parentElement.classList.remove(isVisable);
+    this.parentElement.parentElement.parentElement.classList.remove(isVisable);
   });
 }
+
+document.addEventListener("keyup", function (e) {
+  if (e.key === "Escape") {
+    let target = document.querySelector(".is-visable");
+    if (target.classList.contains("full-site-modal")) {
+      target.classList.remove("is-visable");
+    } else if (target.classList.contains("modal")) {
+      target.classList.remove("is-visable");
+      deleteModal(target);
+    }
+  }
+});
