@@ -288,9 +288,37 @@ nav .navbar {
   cursor: pointer;
 }
 
-.modal-body {
+.full-site-modal .modal-header h3,
+.full-site-modal .modal-header .fa-times {
+  color: var(--color-text);
+}
+.full-site-modal-body {
   display: flex;
-  align-items: center;
+  justify-content: center;
+}
+.full-site-modal-body .img-wrapper {
+  text-align: center;
+}
+.full-site-modal-body .img-wrapper img {
+  border-radius: 50%;
+  object-fit: cover;
+  max-width: 250px;
+}
+
+.full-site-modal-body .full-modal-text {
+  color: var(--color-text);
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+.full-site-modal-body .full-modal-text h2 {
+  color: var(--color-text);
+}
+
+.full-modal-text p,
+.full-modal-text .contact-me-block {
+  font-size: 1.2rem;
 }
 
 [data-animation="zoomInOut"].full-site-modal {
@@ -308,6 +336,11 @@ nav .navbar {
   background: rgba(0, 0, 0, 0.8);
   z-index: 1000;
   cursor: pointer;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
 }
 
 .modal-dialogue {

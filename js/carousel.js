@@ -9,12 +9,6 @@ const reviews = [
   [4, ipsum, "ava-1.jpg", "John Johnson", "Companies-R-Us.co"],
 ];
 
-let current = Math.floor(Math.random() * reviews.length);
-for (const card of slides) {
-  current = (current + 1) % reviews.length;
-  setCard(card, current);
-}
-current = (current + reviews.length - 2) % reviews.length;
 function setCard(card, i) {
   const text = (card.querySelector(
     ".review-text"
@@ -23,6 +17,14 @@ function setCard(card, i) {
   card.querySelector(".name").innerHTML = reviews[i][3];
   card.querySelector(".company").innerHTML = reviews[i][4];
 }
+
+// First time setup
+let current = Math.floor(Math.random() * reviews.length);
+for (const card of slides) {
+  current = (current + 1) % reviews.length;
+  setCard(card, current);
+}
+current = (current + reviews.length - 2) % reviews.length;
 
 buttons[0].addEventListener("click", () => {
   const active = document.querySelector(".review-item.active");
