@@ -61,15 +61,19 @@ for (const card of portfolioCards) {
   switch (card[1]) {
     case "web": {
       categorey.innerHTML = "Web Development";
+      break;
     }
     case "app": {
       categorey.innerHTML = "App Development";
+      break;
     }
     case "ui": {
       categorey.innerHTML = "UI Design";
+      break;
     }
     default: {
       categorey.innerHTML = "Personal Project";
+      break;
     }
   }
   popup.appendChild(categorey);
